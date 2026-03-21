@@ -7,12 +7,11 @@ TODO:
     - Add optional whitespace in JSON grammar
 - Test suite for JSON parser
 ######################################################
-v0.1.6 - Parse Tree
-    - Commit: 
+v0.1.6 - Minor Adjustments
+    x Commit: 2026-01-26 16:49
     x Update error message (no quotes)
     x Rename Parse() to CheckSyntaxError()
     x Add comments in cfg file
-    - Parse() - return parse tree
 v0.1.5 - Fix ReadLineBytes
     x Commit: 2026-01-22 15:06
     x Fix ReadLineBytes

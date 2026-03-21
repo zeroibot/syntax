@@ -1,2 +1,2 @@
-# nlp 
-Tokenizer and Parser (NLP tools), written in Go
+# syntax 
+General tokenizer and parser, written in Go

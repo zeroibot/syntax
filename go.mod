@@ -1,5 +1,3 @@
-module github.com/roidaradal/nlp
+module github.com/roidaradal/syntax
 
-go 1.25.0
-
-require github.com/roidaradal/fn v0.5.50
+go 1.26.0
