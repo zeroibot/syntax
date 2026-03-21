@@ -1,0 +1,10 @@
+{
+  "Name"      : "roi",
+  "Age"       : 30,
+  "Rating"    : 85.68,
+  "Balance"   : -100.25,
+  "Value"     : -3.25e-12,
+  "Motto"     : "\"Seize the day!\"",
+  "Data"      : ["apple", 1, true, false, null],
+  "Tagline"   : "My favorite motto is \"Seize the day"
+}

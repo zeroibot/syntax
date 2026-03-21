@@ -24,6 +24,9 @@ func (t Token) String() string {
 	if strings.HasPrefix(t.Type, "LIT_") {
 		// Literal Token, no need to display inner text
 		return t.Type[4:]
+	} else if strings.HasPrefix(t.Type, "KW_") {
+		// Keyword Token, no need to display inner text
+		return t.Type[3:]
 	}
 	return fmt.Sprintf("%s(%s)", t.Type, t.Text)
 }
@@ -33,8 +36,14 @@ type Lexer struct {
 	patterns   []*regexp.Regexp
 }
 
-// NewLexerFromLines creates a new Lexer with token types and patterns from given lines
-func NewLexerFromLines(lines []string) (*Lexer, error) {
+// NewLexer creates a new Lexer with token types and patterns from given file path
+func NewLexer(path string) (*Lexer, error) {
+	cfgFile, err := readCfgLines(path)
+	if err != nil {
+		return nil, err
+	}
+
+	lines := cfgFile.tokenLines
 	numLines := len(lines)
 	tokenTypes := make([]string, 0, numLines)
 	patterns := make([]*regexp.Regexp, 0, numLines)
@@ -57,15 +66,6 @@ func NewLexerFromLines(lines []string) (*Lexer, error) {
 	return lexer, nil
 }
 
-// NewLexerFromFile creates a new Lexer with token types and patterns from given file path
-func NewLexerFromFile(path string) (*Lexer, error) {
-	cfgFile, err := readCfgLines(path)
-	if err != nil {
-		return nil, err
-	}
-	return NewLexerFromLines(cfgFile.tokenLines)
-}
-
 // Tokenize tokenizes the given string, and returns the list of Tokens.
 // We can pass in a list of TokenTypes to ignore (pass nil if nothing to ignore).
 func (lexer *Lexer) Tokenize(text string, ignoreTypes []string) ([]Token, error) {
@@ -74,12 +74,14 @@ func (lexer *Lexer) Tokenize(text string, ignoreTypes []string) ([]Token, error)
 		ignore[tokenType] = true
 	}
 	tokens := make([]Token, 0)
-	for row, line := range strings.Split(text, "\n") {
+	row := 0
+	for line := range strings.Lines(text) {
 		lineTokens, err := lexer.tokenizeLine(row, []byte(line), ignore)
 		if err != nil {
 			return nil, err
 		}
 		tokens = append(tokens, lineTokens...)
+		row += 1
 	}
 	return tokens, nil
 }
