@@ -39,7 +39,7 @@ func readCfgLines(path string) (*cfgFile, error) {
 			grammarLines = append(grammarLines, line)
 		}
 	}
-	if err := scanner.Err(); err != nil {
+	if err = scanner.Err(); err != nil {
 		return nil, fmt.Errorf("cfg scan error: %w", err)
 	}
 	return new(cfgFile{tokenLines, grammarLines}), nil

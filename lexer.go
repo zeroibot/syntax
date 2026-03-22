@@ -36,14 +36,17 @@ type Lexer struct {
 	patterns   []*regexp.Regexp
 }
 
-// NewLexer creates a new Lexer with token types and patterns from given file path
+// NewLexer creates a new Lexer with token types and patterns from the given file path
 func NewLexer(path string) (*Lexer, error) {
-	cfgFile, err := readCfgLines(path)
+	cfg, err := readCfgLines(path)
 	if err != nil {
 		return nil, err
 	}
+	return newLexerFromLines(cfg.tokenLines)
+}
 
-	lines := cfgFile.tokenLines
+// newLexerFromLines creates a new Lexer from the list of token lines
+func newLexerFromLines(lines []string) (*Lexer, error) {
 	numLines := len(lines)
 	tokenTypes := make([]string, 0, numLines)
 	patterns := make([]*regexp.Regexp, 0, numLines)
@@ -52,7 +55,7 @@ func NewLexer(path string) (*Lexer, error) {
 		if line == "" {
 			continue
 		}
-		parts := strings.SplitN(line, ":", 2)
+		parts := strings.SplitN(line, "=", 2)
 		tokenType := strings.TrimSpace(parts[0])
 		tokenPattern := strings.TrimSpace(parts[1])
 		pattern, err := regexp.Compile("^" + tokenPattern) // prefix with ^ so we match the front, not substrings
