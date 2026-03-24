@@ -69,7 +69,7 @@ func newLexerFromLines(lines []string) (*Lexer, error) {
 	return lexer, nil
 }
 
-// Tokenize tokenizes the given string, and returns the list of Tokens.
+// Tokenize tokenizes the given string and returns the list of Tokens.
 // We can pass in a list of TokenTypes to ignore (pass nil if nothing to ignore).
 func (lexer *Lexer) Tokenize(text string, ignoreTypes []string) ([]Token, error) {
 	ignore := make(map[string]bool)
@@ -93,20 +93,20 @@ func (lexer *Lexer) Tokenize(text string, ignoreTypes []string) ([]Token, error)
 func (lexer *Lexer) tokenizeLine(row int, line []byte, ignoreType map[string]bool) ([]Token, error) {
 	// Tokenize line by checking each pattern for a match, until line is fully consumed or no pattern matches remaining line
 	tokens := make([]Token, 0)
-	col := 0 // keeps track of current column index from original line
+	col := 0 // keeps track of the current column index from the original line
 	for len(line) > 0 {
 		found := false
 		for i, pattern := range lexer.patterns {
 			match := pattern.FindIndex(line)
 			if match == nil {
-				continue // move on to next if not a match
+				continue // move on to the next if not a match
 			}
 			start, end := match[0], match[1]
-			chunk := string(line[start:end]) // get chunk of text matched by pattern
-			tokenType := lexer.tokenTypes[i] // get corresponding token type
-			line = line[end:]                // consume chunk and get remaining line
+			chunk := string(line[start:end]) // get a chunk of text matched by a pattern
+			tokenType := lexer.tokenTypes[i] // get the corresponding token type
+			line = line[end:]                // consume chunk and get the remaining line
 			if !ignoreType[tokenType] {
-				// Add to tokens if token type is not ignored
+				// Add to tokens if the token type is not ignored
 				tokens = append(tokens, Token{
 					Type:     tokenType,
 					Text:     chunk,
@@ -115,7 +115,7 @@ func (lexer *Lexer) tokenizeLine(row int, line []byte, ignoreType map[string]boo
 					ColEnd:   col + end,
 				})
 			}
-			// Move column index forward
+			// Move the column index forward
 			col += end - start
 			found = true
 			break

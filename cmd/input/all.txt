@@ -1,0 +1,30 @@
+null
+true
+false
+"Hello World"
+12345
+[]
+[null]
+[true]
+[false]
+["Name"]
+[123]
+[null,true]
+[true,false]
+["Name","Age"]
+[123,456]
+[null,true,false,"Name",15]
+[[1,2,3],[4,5,6]]
+[{"Name":"John","Age":30},{"Name":"Jane","Age":25}]
+{}
+{"ID":null}
+{"IsActive":true}
+{"IsLocked":false}
+{"Name":"John"}
+{"Age":30}
+{"Languages": ["English","Spanish"]}
+{"Config": {"MaxUsers": 3, "MaxConnections": 10}}
+{"IP": null, "Browser": null}
+{"IsActive": true, "IsLocked": false}
+{"Name": "John", "Age": 30}
+{"Languages": ["English","Spanish"], "Config": {"MaxUsers": 3, "MaxConnections": 10}}

@@ -4,12 +4,13 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"strings"
 
 	"github.com/roidaradal/syntax"
 )
 
 func main() {
-	text, err := readFile("input/1.json")
+	text, err := readFile("input/all.txt")
 	if err != nil {
 		log.Fatal(fmt.Errorf("failed reading input file: %w", err))
 	}
@@ -19,13 +20,14 @@ func main() {
 		log.Fatal(fmt.Errorf("failed creating new lexer: %w", err))
 	}
 
-	tokens, err := lexer.Tokenize(text, []string{"LIT_WS"})
-	if err != nil {
-		log.Fatal(fmt.Errorf("failed tokenizing: %w", err))
-	}
-
-	for i, token := range tokens {
-		fmt.Println(i+1, token)
+	ignore := []string{"LIT_WS"}
+	for line := range strings.Lines(text) {
+		tokens, err := lexer.Tokenize(line, ignore)
+		if err != nil {
+			fmt.Printf("Error in tokenizing %q: %v\n", line, err)
+			continue
+		}
+		fmt.Println(tokens)
 	}
 }
 
