@@ -8,9 +8,10 @@ TODO:
 - Test suite for JSON parser
 ######################################################
 v0.2.0 - Rewrite Lexer and Parser
-    - Commit:
+    x Commit: 2026-03-30 16:55
     x Rewrite Lexer
-    - Rewrite Parser
+    x Rewrite Parser
+    x Rename Package
 v0.1.6 - Minor Adjustments
     x Commit: 2026-01-26 16:49
     x Update error message (no quotes)
