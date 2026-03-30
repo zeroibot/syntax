@@ -1,0 +1,5 @@
+{
+"Countries" : ["PH", "KR", "CN", "HK"],
+"Languages" : ["Go", "Python", "Svelte"],
+"Regions"   : ["6", "7"]
+}

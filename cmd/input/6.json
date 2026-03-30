@@ -1,0 +1,5 @@
+[
+{"name": "John", "age": 5, "isAlive": true},
+{"name": "Jack", "age": 6, "isAlive": true},
+{"name": "Mary", "age": 69, "isAlive": false}
+]

@@ -1,0 +1,19 @@
+{
+"Auth" : {
+"ArchiveExpiredSessionsIntervalHours" : 1,
+"Allowed" : ["GET", "POST", "DELETE"],
+"DeleteArchivedSessionsIntervalHours" : 24,
+"DeleteArchivedSessionsMarginDays" : 100,
+"ExtendSessionsIntervalHours" : 3
+},
+"Accounts" : {
+    "zoi"   : {
+        "Name": "Zoi",
+        "Age": 10
+    },
+    "boi" : {
+        "Name": "Boi",
+        "Age": 67
+    }
+}
+}

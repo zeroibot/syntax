@@ -1,0 +1,8 @@
+{
+"ArchiveExpiredSessionsIntervalHours" : 1,
+"DeleteArchivedSessionsIntervalHours" : 24,
+"DeleteArchivedSessionsMarginDays" : 100,
+"ExtendSessionsIntervalHours" : 3,
+"IsAlive": true,
+"Name": "john"
+}
