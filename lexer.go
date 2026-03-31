@@ -45,6 +45,16 @@ func NewLexer(path string) (*Lexer, error) {
 	return newLexerFromLines(cfg.tokenLines)
 }
 
+// NewLexerFrom creates a new Lexer with token types and patterns from the given text
+func NewLexerFrom(text string) (*Lexer, error) {
+	reader := strings.NewReader(text)
+	cfg, err := createCfg(reader)
+	if err != nil {
+		return nil, err
+	}
+	return newLexerFromLines(cfg.tokenLines)
+}
+
 // newLexerFromLines creates a new Lexer from the list of token lines
 func newLexerFromLines(lines []string) (*Lexer, error) {
 	numLines := len(lines)

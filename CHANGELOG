@@ -7,6 +7,10 @@ TODO:
     - Add optional whitespace in JSON grammar
 - Test suite for JSON parser
 ######################################################
+v0.2.1 - NewLexerFrom and NewParserFrom
+    - Commit:
+    x NewLexerFrom
+    - NewParserFrom
 v0.2.0 - Rewrite Lexer and Parser
     x Commit: 2026-03-30 16:55
     x Rewrite Lexer
