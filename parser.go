@@ -30,7 +30,20 @@ func NewParser(path string) (*Parser, error) {
 	if err != nil {
 		return nil, err
 	}
+	return newParserFromCfg(cfg)
+}
 
+// NewParserFrom creates a new Parser from the given text
+func NewParserFrom(text string) (*Parser, error) {
+	cfg, err := createCfg(strings.NewReader(text))
+	if err != nil {
+		return nil, err
+	}
+	return newParserFromCfg(cfg)
+}
+
+// newParserFromCfg creates a new Parser from the given cfgFile
+func newParserFromCfg(cfg *cfgFile) (*Parser, error) {
 	lexer, err := newLexerFromLines(cfg.tokenLines)
 	if err != nil {
 		return nil, err

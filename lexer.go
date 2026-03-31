@@ -47,8 +47,7 @@ func NewLexer(path string) (*Lexer, error) {
 
 // NewLexerFrom creates a new Lexer with token types and patterns from the given text
 func NewLexerFrom(text string) (*Lexer, error) {
-	reader := strings.NewReader(text)
-	cfg, err := createCfg(reader)
+	cfg, err := createCfg(strings.NewReader(text))
 	if err != nil {
 		return nil, err
 	}

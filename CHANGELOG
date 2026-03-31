@@ -8,9 +8,9 @@ TODO:
 - Test suite for JSON parser
 ######################################################
 v0.2.1 - NewLexerFrom and NewParserFrom
-    - Commit:
+    x Commit: 2026-03-31 09:57
     x NewLexerFrom
-    - NewParserFrom
+    x NewParserFrom
 v0.2.0 - Rewrite Lexer and Parser
     x Commit: 2026-03-30 16:55
     x Rewrite Lexer
